@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UserTrace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>UserTrace</h1>
+        <p>OSINT Username Investigation Tool</p>
+        <form method="POST">
+            <input type="text"  name="username"  placeholder="Enter Username"  required>
+            <button type="submit">Search</button>
+        </form>
+        {% if results %}
+        <h2>Potential Profiles</h2>
+        <ul>
+            {% for site, link in results.items() %}
+            <li>
+                <a href="{{ link }}" target="_blank">{{ site }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
